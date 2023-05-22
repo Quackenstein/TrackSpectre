@@ -12,5 +12,5 @@ RUN wget -P ./ckpt https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/
 RUN gdown --id '1QoChMkTVxdYZ_eBlZhK2acq9KMQZccPJ' --output ./ckpt/R50_DeAOTL_PRE_YTB_DAV.pth
 RUN export PATH=/usr/local/cuda-11.6/bin/:$PATH && TORCH_CUDA_ARCH_LIST="3.5;5.0;6.0;6.1;7.0;7.5;8.0;8.6+PTX" pip install -e git+https://github.com/IDEA-Research/GroundingDINO.git@main#egg=GroundingDINO
 RUN export PATH=/usr/local/cuda-11.6/bin/:$PATH && git clone https://github.com/ClementPinard/Pytorch-Correlation-extension.git && cd Pytorch-Correlation-extension && TORCH_CUDA_ARCH_LIST="3.5;5.0;6.0;6.1;7.0;7.5;8.0;8.6+PTX" python setup.py install
-RUN python -m pip install --no-binary opencv-python opencv-python --force --verbose
+RUN MAKEFLAGS="-j 12" python -m pip install --no-binary opencv-python opencv-python --force --verbose
 CMD python3 ./app.py
