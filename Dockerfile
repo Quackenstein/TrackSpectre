@@ -1,10 +1,9 @@
 from pytorch/pytorch:1.13.1-cuda11.6-cudnn8-devel
 WORKDIR /
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Europe/Berlin apt-get upgrade -y
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Europe/Berlin apt-get install -y git python3-pip ffmpeg libz-dev libjpeg-dev wget zip build-essential cmake git python3-dev python3-numpy libavcodec-dev libavformat-dev libswscale-dev
-libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev libgtk-3-dev libpng-dev libjpeg-dev libopenexr-dev libtiff-dev libwebp-dev libopencv-dev x264 libx264-dev libssl-dev ffmpeg
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Europe/Berlin apt-get install -y git python3-pip ffmpeg libz-dev libjpeg-dev wget zip build-essential cmake git python3-dev python3-numpy libavcodec-dev libavformat-dev libswscale-dev libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev libgtk-3-dev libpng-dev libjpeg-dev libopenexr-dev libtiff-dev libwebp-dev libopencv-dev x264 libx264-dev libssl-dev ffmpeg
 RUN pip3 install pip --upgrade
-RUN pip install pillow gradio gdown scikit-image
+RUN pip install gradio gdown scikit-image pillow
 RUN git clone https://github.com/Quackenstein/Segment-and-Track-Anything
 WORKDIR /Segment-and-Track-Anything
 RUN wget -P ./ckpt https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth
